@@ -49,7 +49,7 @@ class AzureResourceOwner extends GenericOAuth2ResourceOwner
      */
     public function getUserInformation(array $accessToken, array $extraParameters = [])
     {
-        $token = $accessToken['id_token'] ?? $this->options['attr_name'];
+        $token = $accessToken['id_token'] ?? $accessToken[$this->options['attr_name']];
 
         // from http://stackoverflow.com/a/28748285/624544
         list(, $jwt) = explode('.', $token, 3);
