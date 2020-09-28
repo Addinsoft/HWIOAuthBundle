@@ -50,7 +50,7 @@ class AzureResourceOwner extends GenericOAuth2ResourceOwner
     public function getUserInformation(array $accessToken, array $extraParameters = [])
     {
         // from http://stackoverflow.com/a/28748285/624544
-        list(, $jwt) = explode('.', $accessToken['id_token'], 3);
+        list(, $jwt) = explode('.', $accessToken[$this->options['attr_name']], 3);
 
         // if the token was urlencoded, do some fixes to ensure that it is valid base64 encoded
         $jwt = str_replace(['-', '_'], ['+', '/'], $jwt);
